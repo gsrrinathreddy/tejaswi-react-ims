@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-//import { ordered } from "../Cake/CakeSlice";
 
 const initialState = {
     cartList:[],
@@ -20,6 +19,11 @@ const cartSlice=createSlice({
             state.totalItems+=parseInt(action.payload.qty);
         },
         ['icecream/ordered']:(state,action)=>{
+            console.log('cart',action.payload)
+            state.cartList.push(action.payload)
+            state.totalItems+=parseInt(action.payload.qty);
+        },
+        ['flower/ordered']:(state,action)=>{
             console.log('cart',action.payload)
             state.cartList.push(action.payload)
             state.totalItems+=parseInt(action.payload.qty);

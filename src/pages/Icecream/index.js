@@ -156,7 +156,7 @@ export default function Icecream(){
     return (
         <>
         <Box sx={{margin:"25px"}}>
-        <Grid  container spacing={{ xs: 5, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} style={{backgroundColor:'#BAC2C1'}}  >
+        <Grid  container spacing={{ xs: 4, sm: 8, md: 12 }} columns={{ xs: 4, sm: 8, md: 12 }} style={{backgroundColor:'#BAC2C1'}}  >
          {
 
                 icecreamList.map((item,index)=>{

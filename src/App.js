@@ -7,6 +7,8 @@ import Icecream from './pages/Icecream';
 import Chocolate from './pages/Chocolate';
 import Cart from './pages/Cart';
 import Gifts from './pages/Gifts';
+import LandingPage from './pages/LandingPage';
+import Flowers from './pages/Flowers';
 
 
 function App(props) {
@@ -14,17 +16,18 @@ function App(props) {
   let n2=['My Account', 'My Orders', 'My Whishlist', 'My Wallet'];
   return (
     <div className="App">
-      <h1>My Cake Store</h1>
+      {/* <h1>My Cake Store</h1> */}
       <BrowserRouter>
       <RNavbar pages={n1}
                 settings={n2}/>
       <Routes>
-        <Route path='/' element={<Gifts/>}/>
+        <Route path='/' element={<Chocolate/>}/>
         <Route path='Cake' element={<Cake/>}/>
         <Route path='Icecream' element={<Icecream/>}/>
         <Route path='Chocolate' element={<Chocolate/>}/>
         <Route path='Cart' element={<Cart/>}/>
         <Route path='Gifts' element={<Gifts/>}/>
+        <Route path='Flowers' element={<Flowers/>}/>
 
       </Routes>
       </BrowserRouter>

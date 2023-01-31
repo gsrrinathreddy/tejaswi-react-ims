@@ -175,7 +175,7 @@ export default function Cake(){
             
         
         </Box>
-        <Box 
+        {/* <Box 
       sx={{
         width: "100%",
         height: 300,
@@ -195,7 +195,7 @@ export default function Cake(){
             <li>press releases</li>
             <li>amazon science</li>
             </ul>
-        </div>
+        </div> */}
          {/* <div className="col">
             <h4>get to know us</h4>
             <ul className="list-unstyled">
@@ -206,7 +206,7 @@ export default function Cake(){
             </ul>
         </div> */}
         
-      </Box>
+      {/* </Box> */}
       
 
         

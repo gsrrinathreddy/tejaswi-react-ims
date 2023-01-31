@@ -10,11 +10,11 @@ const flowerSlice = createSlice({
     initialState,
     reducers : {
         ordered : (state,action)=>{
-            state.numOfFlowers  -= action.payload.qty;
-            state.noOfOrderedFlowers += parseInt(action.payload.qty);
+            state.numOfFlowers -= action.payload.qty;
+            state.noOfOrderedFlowers += parseInt(action.payload.qty)
         },
         restocked : (state,action)=>{
-            state.numOfFlowers += action.payload;
+            state.numOfFlowers += action.payload.qty;
         }
     },
 })

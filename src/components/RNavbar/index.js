@@ -30,7 +30,8 @@ function RNavbar(props) {
     let OrderedCakes = useSelector((state)=>state.cake.noOfOrderedCakes);
     let OrderedIcecreams = useSelector((state)=>state.icecream.noOfOrderedIcecreams);
     let OrderedChocolates = useSelector((state)=>state.chocolate.noOfOrderedChocolates);
-    let order = OrderedCakes + OrderedIcecreams + OrderedChocolates ;
+    let OrderedFlowers = useSelector((state)=>state.flower.noOfOrderedFlowers);
+    let order = OrderedCakes + OrderedIcecreams + OrderedChocolates + OrderedFlowers;
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -62,6 +63,7 @@ function RNavbar(props) {
                 
               </IconButton>
             </Tooltip>
+           <Link to="/" style={{textDecoration:"none"}}> 
           <Typography
             variant="h6"
             noWrap
@@ -79,6 +81,7 @@ function RNavbar(props) {
           >
             BAKE HOUSE
           </Typography>
+          </Link>
 
           {/* <Box sx={{bgcolor:'white'}}>
             <RAutocomplete/>

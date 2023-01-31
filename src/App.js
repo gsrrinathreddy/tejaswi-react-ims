@@ -10,7 +10,8 @@ import Gifts from './pages/Gifts';
 import LandingPage from './pages/LandingPage';
 import Flowers from './pages/Flowers';
 
-console.log("Tejus bakery")
+console.log("Tejus bakery");
+console.log("Sandra");
 function App(props) {
   let n1=['Cake', 'Icecream', 'Chocolate','Flowers','Gifts'];
   let n2=['My Account', 'My Orders', 'My Whishlist', 'My Wallet'];

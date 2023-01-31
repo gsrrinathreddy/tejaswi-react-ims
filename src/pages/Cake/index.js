@@ -14,6 +14,7 @@ import Funfetti_cupcakes from '../../assets/Funfetti_cupcakes.jpg';
 import Number_Cakes_Recipe from '../../assets/Number_Cakes_Recipe.jpg';
 import Rainbow_cake from '../../assets/Rainbow_cake.jpg';
 import Snicker_fuse_chocolate_cake from '../../assets/Snicker_fuse_chocolate_cake.jpg'
+import { ordered } from "../../features/Cake/CakeSlice";
 
 
 const cakeList = [
@@ -132,7 +133,7 @@ const cakeList = [
 ]
 
 export default function Cake(){
-    let ordername="cake";
+    
     //let cakesimg=["https://www.fnp.com/images/pr/l/v20221118185135/chocolate-cream-cake-1kg_1.jpg"];
     //let cakenames=["Chocolate Cake"]
     // let noOfCakes = useSelector((state)=>state.cake.numOfCakes);
@@ -144,12 +145,12 @@ export default function Cake(){
     return(
         <>
         <Box sx={{margin:"25px"}}>
-        <Grid  container spacing={{ xs: 5, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} style={{backgroundColor:'#BAC2C1'}}  >
+        <Grid  container spacing={{ xs: 4, sm: 8, md: 12 }} columns={{ xs: 4, sm: 8, md: 12 }} style={{backgroundColor:'#BAC2C1'}}  >
          {
 
                 cakeList.map((item,index)=>{
                    return(
-                    <Grid  item xs={2} sm={4} md={4} key={index}  justifyContent='center'>
+                    <Grid  item xs={4} sm={4} md={4} key={index}  justifyContent='center'>
                         <RCard  title={item.title}
                                 discountedPrice={item.discountedPrice}
                                 subheader={item.subheader}
@@ -157,7 +158,7 @@ export default function Cake(){
                                 actualPrice={item.actualPrice}
                                 sellingStatus={item.sellingStatus}
                                 currency={item.currency}
-                                ordername={ordername}
+                                order={ordered}
                                 
                                 
                         >

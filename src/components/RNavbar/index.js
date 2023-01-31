@@ -55,6 +55,7 @@ function RNavbar(props) {
       <Container  maxWidth="xl" sx={{ backgroundImage : 'linear-gradient(to right , maroon , brown ,  pink )' }}>
         <Toolbar disableGutters>
           {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
+          <Link to='/' style={{textDecoration:"none"}}/>
           <Tooltip title="Profile">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="https://img.freepik.com/free-vector/bakery-logo-food-business-template-branding-design-vector_53876-136255.jpg" />
@@ -112,9 +113,11 @@ function RNavbar(props) {
               }}
             >
               {pages.map((page) => (
+                <Link to={page} style={{textDecoration:'none'}}>
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
+                </Link>
               ))}
             </Menu>
           </Box>
@@ -142,7 +145,7 @@ function RNavbar(props) {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
-                <Link to={page}>
+                <Link to={page} >
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}

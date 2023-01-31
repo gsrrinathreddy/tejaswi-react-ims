@@ -19,6 +19,7 @@ function App(props) {
       <RNavbar pages={n1}
                 settings={n2}/>
       <Routes>
+        <Route path='/' element={<Gifts/>}/>
         <Route path='Cake' element={<Cake/>}/>
         <Route path='Icecream' element={<Icecream/>}/>
         <Route path='Chocolate' element={<Chocolate/>}/>

@@ -15,6 +15,7 @@ import Queen_of_roses_icecream from '../../assets/Queen_of_roses_icecream.jpg';
 import Strawberyy_icecream from '../../assets/Strawberyy_icecream.jpg';
 import three_cheers_chocolateTub from '../../assets/three_cheers_chocolateTub.jpg';
 import Tricone_butterscotch_icecream from '../../assets/Tricone_butterscotch_icecream.jpg';
+import { ordered } from "../../features/Icecream/IcecreamSlice";
 
 const icecreamList = [
     {
@@ -146,7 +147,6 @@ const icecreamList = [
 ]
 
 export default function Icecream(){
-    let ordername="icecream"
 
     
     // let icecreamimg=["https://rumkisgoldenspoon.com/wp-content/uploads/2022/05/Gulkand-icecream.jpg"];
@@ -161,7 +161,7 @@ export default function Icecream(){
 
                 icecreamList.map((item,index)=>{
                    return(
-                    <Grid  item xs={2} sm={4} md={4} key={index}  justifyContent='center'>
+                    <Grid  item xs={4} sm={4} md={4} key={index}  justifyContent='center'>
                         <RCard  title={item.title}
                                 discountedPrice={item.discountedPrice}
                                 subheader={item.subheader}
@@ -169,7 +169,7 @@ export default function Icecream(){
                                 actualPrice={item.actualPrice}
                                 sellingStatus={item.sellingStatus}
                                 currency={item.currency}
-                                ordername={ordername}
+                                order={ordered}
                                 
                                 
                         >

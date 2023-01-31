@@ -73,6 +73,7 @@ export default function RCard(props) {
     let dp=Math.floor((discount/actualPrice)*100)+"% off";
     let currency=props.currency;
     let ordername=props.ordername;
+    let orderPlaced=props.order;
 
   const [expanded, setExpanded] = React.useState(false);
   const [active,setActive] = React.useState();
@@ -172,16 +173,9 @@ export default function RCard(props) {
       
       <Box>
       <IconButton  aria-label="cart " size='small'   sx={{color:'black' ,   }} onClick={()=>{
-        if (ordername=="cake"){
-          dispatch(cakeorder(params))
-        }
-        else if (ordername=="icecream"){
-          dispatch(icecreamorder(params))
-        } 
-        else if (ordername=="chocolate"){
-          dispatch(chocolateorder(params))
-        }
-        
+       
+          dispatch(orderPlaced(params))
+       
 
       }}>
 

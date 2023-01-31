@@ -14,6 +14,7 @@ import Snickers_peanut_chocolate_bar from '../../assets/Snicker_fuse_chocolate_c
 import Square_chocolates from '../../assets/Square_chocolates.jpg';
 import Dairymilk_chocolairs from '../../assets/Dairymilk_chocolairs.jpg';
 import Chocolate_vase from '../../assets/Chocolate_vase.jpg';
+import { ordered } from "../../features/Chocolate/ChocolateSlice";
 
 const chocolateList = [
     {
@@ -127,7 +128,7 @@ const chocolateList = [
 ]
 
 export default function Chocolate(){
-    let ordername="chocolate"
+    
 
     // let chocoimg=["https://health.clevelandclinic.org/wp-content/uploads/sites/3/2015/03/chocolateWhiteDark-454384771-770x533-1.jpg"];
     // let choconames=["Chocolates"]
@@ -140,7 +141,7 @@ export default function Chocolate(){
 
                 chocolateList.map((item,index)=>{
                    return(
-                    <Grid  item xs={2} sm={4} md={4} key={index}  justifyContent='center'>
+                    <Grid  item xs={4} sm={4} md={4} key={index}  justifyContent='center'>
                         <RCard  title={item.title}
                                 discountedPrice={item.discountedPrice}
                                 subheader={item.subheader}
@@ -148,7 +149,8 @@ export default function Chocolate(){
                                 actualPrice={item.actualPrice}
                                 sellingStatus={item.sellingStatus}
                                 currency={item.currency}
-                                ordername={ordername}
+                                order={ordered}
+                                
                                 
                         >
                             

@@ -1,10 +1,14 @@
 import RCard from "../../components/RCard";
 import  Grid  from "@mui/material/Grid";
 import  Box  from "@mui/material/Box";
-import Amul_chocolate_brownie from '../../assets/Amul_chocolate_brownie.jpg';
-import Amul_fruit_n_nut_fantasy from '../../assets/Amul_fruit_n_nut_fantasy.jpg';
-import Amul_gold_vanilla_cream from '../../assets/Amul_gold_vanilla_cream.jpg';
-import Amul_rajbhog_icecream from '../../assets/Amul_rajbhog_icecream.jpg';
+import Blackcurrent_icecream from '../../assets/Blackcurrent_icecream.jpg';
+import Butterscotch_Icecream from '../../assets/Butterscotch_Icecream.jpg';
+import Cookie_icecream from '../../assets/Cookie_icecream.webp';
+import Gelato_icecream from '../../assets/Gelato_icecream.webp';
+// import Amul_chocolate_brownie from '../../assets/Amul_chocolate_brownie.jpg';
+// import Amul_fruit_n_nut_fantasy from '../../assets/Amul_fruit_n_nut_fantasy.jpg';
+// import Amul_gold_vanilla_cream from '../../assets/Amul_gold_vanilla_cream.jpg';
+// import Amul_rajbhog_icecream from '../../assets/Amul_rajbhog_icecream.jpg';
 import Brooklyn_creamery_kulfi_icecream from '../../assets/Brooklyn_creamery_kulfi_icecream.jpg';
 import Chocochip_icecream from '../../assets/Chocochip_icecream.jpg';
 import Lychee_icecream from '../../assets/Lychee_icecream.jpg';
@@ -16,43 +20,52 @@ import Strawberyy_icecream from '../../assets/Strawberyy_icecream.jpg';
 import three_cheers_chocolateTub from '../../assets/three_cheers_chocolateTub.jpg';
 import Tricone_butterscotch_icecream from '../../assets/Tricone_butterscotch_icecream.jpg';
 import { ordered } from "../../features/Icecream/IcecreamSlice";
+import FacebookIcon from '@mui/icons-material/Facebook';
+import YouTubeIcon from '@mui/icons-material/YouTube';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import IcecreamIcon from '@mui/icons-material/Icecream';
+
 
 const icecreamList = [
     {
-        title : "Chocolate Brownie icecream",
+        title : "Brownie icecream",
         subheader : "everything works with icecream",
-        cardmedia : Amul_chocolate_brownie,
+        cardmedia : Blackcurrent_icecream,
         currency : "₹",
         discountedPrice : 79,
         actualPrice : 89 ,
         sellingStatus : "bestSeller",
+        delivery:'Tommorrow',
     },
     {
         title : "Fruit N Nut Fantasy ",
         subheader : "Fruit N Fun",
-        cardmedia : Amul_fruit_n_nut_fantasy,
+        cardmedia : Butterscotch_Icecream,
         currency : "₹",
         discountedPrice : 149,
         actualPrice : 159 ,
         sellingStatus : "bestSeller",
+        delivery:'Today',
     },
     {
         title : "Gold Vanilla cream",
         subheader : "Stay chill, sweetie!!",
-        cardmedia : Amul_gold_vanilla_cream,
+        cardmedia : Cookie_icecream,
         currency : "₹",
         discountedPrice : 249,
         actualPrice : 260 ,
         sellingStatus : "bestSeller",
+        delivery:'Today',
     },
     {
         title : "Rajbhog icecream ",
         subheader : "Scoop with me",
-        cardmedia : Amul_rajbhog_icecream,
+        cardmedia : Gelato_icecream,
         currency : "₹",
         discountedPrice : 289,
         actualPrice : 300 ,
         sellingStatus : "bestSeller",
+        delivery:'Tommorrow',
     },
     {
         title : "Creamy kulfi icecream",
@@ -62,6 +75,7 @@ const icecreamList = [
         discountedPrice : 99,
         actualPrice : 109 ,
         sellingStatus : "bestSeller",
+        delivery:'Today',
     },
     {
         title : "Chocochip icecream",
@@ -71,6 +85,7 @@ const icecreamList = [
         discountedPrice : 349,
         actualPrice : 369 ,
         sellingStatus : "bestSeller",
+        delivery:'Today',
     },
     {
         title : "Lychee icecream",
@@ -80,6 +95,7 @@ const icecreamList = [
         discountedPrice : 49,
         actualPrice : 52 ,
         sellingStatus : "bestSeller",
+        delivery:'Tommorrow',
     },
     {
         title : "Mango icecream",
@@ -89,6 +105,7 @@ const icecreamList = [
         discountedPrice : 79,
         actualPrice : 89 ,
         sellingStatus : "bestSeller",
+        delivery:'Today',
     },
     {
         title : "Mint brownie fudge",
@@ -98,6 +115,7 @@ const icecreamList = [
         discountedPrice : 129,
         actualPrice : 135 ,
         sellingStatus : "bestSeller",
+        delivery:'Tommorrow',
     },
     {
         title : "Oreo tub icecream ",
@@ -107,15 +125,17 @@ const icecreamList = [
         discountedPrice : 79,
         actualPrice : 85 ,
         sellingStatus : "bestSeller",
+        delivery:'Today',
     },
     {
-        title : "Queen of roses icecream",
+        title : "Roses icecream",
         subheader : "Ice cream is my therapy",
         cardmedia : Queen_of_roses_icecream,
         currency : "₹",
         discountedPrice : 139,
         actualPrice : 150 ,
         sellingStatus : "bestSeller",
+        delivery:'Tommorrow',
     },
     {
         title : "Strawberry icecream",
@@ -125,6 +145,7 @@ const icecreamList = [
         discountedPrice : 99,
         actualPrice : 129 ,
         sellingStatus : "bestSeller",
+        delivery:'Tommorrow',
     },
     {
         title : "3 cheers chocolate Tub",
@@ -134,6 +155,7 @@ const icecreamList = [
         discountedPrice : 239,
         actualPrice : 259 ,
         sellingStatus : "bestSeller",
+        delivery:'Today',
     },
     {
         title : "Tricone butterscotch icecream",
@@ -143,6 +165,7 @@ const icecreamList = [
         discountedPrice : 439,
         actualPrice : 500 ,
         sellingStatus : "bestSeller",
+        delivery:'Tommorrow',
     },
 ]
 
@@ -155,13 +178,17 @@ export default function Icecream(){
 
     return (
         <>
-        <Box sx={{margin:"25px"}}>
-        <Grid  container spacing={{ xs: 4, sm: 8, md: 12 }} columns={{ xs: 4, sm: 8, md: 12 }} style={{backgroundColor:'#BAC2C1'}}  >
-         {
+        <Box >
+        <Grid
+          container spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}
+          style={{ backgroundColor: "#FADBD8" }}>
+       
+           {
 
                 icecreamList.map((item,index)=>{
                    return(
-                    <Grid  item xs={4} sm={4} md={4} key={index}  justifyContent='center'>
+                    <Grid display="flex" justifyContent="center" xs={4} sm={4} md={4} pt={4}>
+                    
                         <RCard  title={item.title}
                                 discountedPrice={item.discountedPrice}
                                 subheader={item.subheader}
@@ -169,6 +196,8 @@ export default function Icecream(){
                                 actualPrice={item.actualPrice}
                                 sellingStatus={item.sellingStatus}
                                 currency={item.currency}
+                                delivery={item.delivery}
+                                titleIcon={<IcecreamIcon/>}
                                 order={ordered}
                                 
                                 
@@ -182,6 +211,21 @@ export default function Icecream(){
             }
             </Grid>
         </Box>
+        <Box style={{backgroundColor: 'rosybrown'  }}  >
+      
+      <h2>Connect with us</h2>
+      <FacebookIcon/>
+     <YouTubeIcon/>
+     <InstagramIcon/> 
+     
+     <h4>About us</h4>
+     <h4>Careers</h4>  
+     <h4>Help</h4>
+     <h4>Policy</h4>
+     <h4>Social</h4>
+     
+     
+   </Box>
         </>
     )
 

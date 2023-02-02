@@ -8,7 +8,8 @@ export default function RAutocomplete() {
       disablePortal
       id="combo-box-demo"
       options={topSearch}
-      sx={{ width: 200 }}
+      sx={{ width: 200 ,}}
+      
       renderInput={(params) => <TextField {...params}  label="Search for Gifts" />}
     />
   );

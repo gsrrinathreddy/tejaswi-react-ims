@@ -1,8 +1,9 @@
-import { Button, Grid, Typography } from "@mui/material";
+import { Button, Card, Grid, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { useSelector } from "react-redux"
 import RStepper from "../../components/RStepper";
 import { useNavigate } from "react-router-dom";
+import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
 
 export default function Cart(){
     // let noOfCakes = useSelector((state)=>state.cake.noOfOrderedCakes);
@@ -19,9 +20,11 @@ export default function Cart(){
     return(
         <>
         <RStepper/> 
-
+        
         <Box>
-            Order Details:
+            <h1>Order Details</h1>
+            
+            
             <Grid container>
 
                 <Grid md={2}>
@@ -109,10 +112,15 @@ export default function Cart(){
                         })
                     }
                     <h3> Total amount : {currency}{sum} </h3>
+                    <Button  sx={{color:"green"}} endIcon={<CardGiftcardIcon/>} >
+                Apply coupon
+            </Button>
                 </Grid>
             </Grid >
+
            </Box>
-         <Button variant="outlined" onClick={()=>navigate('order-summary')}>
+           
+         <Button variant="outlined" onClick={()=>navigate('Checkout')}>
             Place Order
         </Button> 
         

@@ -21,7 +21,7 @@ export default function RBadge(props) {
   return (
     <IconButton aria-label="cart">
       <StyledBadge badgeContent={badgeContent} color="secondary">
-        <ShoppingCartIcon/>
+        {cartIcon}
         </StyledBadge>
     </IconButton>
   );

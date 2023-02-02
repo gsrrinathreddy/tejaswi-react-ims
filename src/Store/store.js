@@ -4,7 +4,8 @@ import cakeReducer from '../features/Cake/CakeSlice';
 import icecreamReducer from '../features/Icecream/IcecreamSlice';
 import chocolateReducer from '../features/Chocolate/ChocolateSlice';
 import flowerReducer from '../features/Flower/FlowerSlice';
-import cartreducer from '../features/Cart/cartSlice'
+import cartreducer from '../features/Cart/cartSlice';
+import giftReducer from '../features/Gift/GiftSlice';
 
 const store = configureStore({
     reducer:{
@@ -12,6 +13,7 @@ const store = configureStore({
         icecream : icecreamReducer,
         chocolate : chocolateReducer,
         flower : flowerReducer,
+        gift : giftReducer,
         cart:cartreducer
         
     },

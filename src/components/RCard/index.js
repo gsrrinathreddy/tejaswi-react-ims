@@ -32,6 +32,14 @@ import { Snackbar } from '@mui/material';
 import { ordered as cakeorder } from '../../features/Cake/CakeSlice';
 import { ordered as icecreamorder } from '../../features/Icecream/IcecreamSlice';
 import { ordered as chocolateorder } from '../../features/Chocolate/ChocolateSlice';
+import RBadge from '../RBadge';
+import MuiAlert from '@mui/material/Alert';
+import Badge from '@mui/material/Badge';
+import CakeIcon from '@mui/icons-material/Cake';
+import Dialogbox from '../Dialogbox';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 // import { ordered as giftorder } from '../../features/'
 
 
@@ -74,6 +82,8 @@ export default function RCard(props) {
     let currency=props.currency;
     let ordername=props.ordername;
     let orderPlaced=props.order;
+    let delivery=props.delivery;
+    let titleIcon=props.titleIcon;
 
   const [expanded, setExpanded] = React.useState(false);
   const [active,setActive] = React.useState();
@@ -98,11 +108,33 @@ export default function RCard(props) {
     discountedPrice:discountedPrice,
     qty:parseInt(qty)}
 
-
+    
+    const Alert = React.forwardRef(function Alert(props, ref) {
+      return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+    });
+    
+     //Snackbar
+      const [open, setOpen] = React.useState(false);
+    
+      const handleClickS = () => {
+        setOpen(true);
+      };
+    
+      const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+          return;
+        }
+    
+        setOpen(false);
+      };
+      //Snackbar
+      
+    
+    
  
   return (
     
-    <Card  sx={{ maxWidth: 500 , marginLeft :'40px', bgcolor:'beige', marginRight:'40px' }}>
+    <Card  sx={{ minWidth: 300 , marginLeft :'40px', bgcolor:'#CCD1D1', marginRight:'20px' }}>
       <div style={{position : "relative"}}>
       <CardMedia style={{height : "250px", }}
       component="img"
@@ -116,10 +148,20 @@ export default function RCard(props) {
       </div>
       
       
-    <CardHeader align='left' 
-          title= {title}
-          subheader={subheader}
-          />
+     <CardHeader  align='left' 
+      avatar={
+        <Avatar sx={{ bgcolor: red[900] }} aria-label="recipe">
+          <IconButton aria-label="share" color='inherit'  >
+          {titleIcon}
+        </IconButton>
+        </Avatar>
+      }
+      
+           title= {title} 
+          
+           subheader={subheader} 
+          /> 
+          
     
     <CardActions disableSpacing  >
      <Stack direction="row" spacing={1}>
@@ -142,7 +184,7 @@ export default function RCard(props) {
 
       <CardContent   >
          <Typography  variant="body3" color="text.secondary" fontStyle='oblique'   >
-          <LocalShippingIcon /> Earliest Delivery : Today
+          <LocalShippingIcon /> Earliest Delivery : {delivery}
         </Typography>
         <Typography variant="body2" color="text.secondary">
   
@@ -151,13 +193,16 @@ export default function RCard(props) {
          <Rating name="customized-10" defaultValue={4} max={5} /></Typography>
       </CardContent>
     <CardActions spacing={0} >
-      <p>{count}</p>
-        <IconButton aria-label="add to favorites" onClick={()=>setCount(count+1) }
+      {/* <p>{count}</p> */}
+        <IconButton aria-label="add to favorites"  onClick={handleClick}
         style={{color:active?"red": "GrayText"}} >
           <FavoriteIcon />
         </IconButton>
         <IconButton aria-label="share" color='inherit'  >
-          <ShareIcon />
+        <ShareIcon/>
+          {/* <Box color='inherit'>
+            <Dialogbox  icon={<ShareIcon/>} dtitle={<WhatsAppIcon/>} label='copy url' b1='cancel' b2='ok'/>
+          </Box> */}
         </IconButton>
       <Box spacing={2}
       component="form"
@@ -173,18 +218,24 @@ export default function RCard(props) {
       
       <Box>
       <IconButton  aria-label="cart " size='small'   sx={{color:'black' ,   }} onClick={()=>{
-       
+         handleClickS();
           dispatch(orderPlaced(params))
+        
        
 
       }}>
+        
 
-       <Stack direction="row" spacing={2}>
-       <Button variant="contained" endIcon={<LocalMallOutlinedIcon />}>
-        Add
+       {/* <Stack direction="row" spacing={2}> */}
+       <Button variant="contained" >
+        Add  
+        <RBadge badgeContent={qty}
+        cartIcon={<LocalMallOutlinedIcon/>}/>
        </Button>
-       </Stack>
-      </IconButton>
+       {/* </Stack>
+           <RBadge badgeContent={qty} 
+       */}
+      </IconButton >
      </Box>
      
      
@@ -193,7 +244,13 @@ export default function RCard(props) {
       <Collapse in={expanded} timeout="auto" unmountOnExit>
     
       </Collapse>
+      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+          Items added to cart
+        </Alert>
+      </Snackbar>
     </Card>
+    
     
   );
 }

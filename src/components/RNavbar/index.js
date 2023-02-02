@@ -20,6 +20,12 @@ import RBadge from '../RBadge';
 import { useSelector } from 'react-redux';
 import CakeOutlinedIcon from '@mui/icons-material/CakeOutlined';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+import PlaceIcon from '@mui/icons-material/Place';
+import Dialogbox from '../Dialogbox';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import { NavLink } from 'react-router-dom';
+
 
 //const pages = ['Products', 'Pricing', 'Blog'];
 //const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -31,7 +37,8 @@ function RNavbar(props) {
     let OrderedIcecreams = useSelector((state)=>state.icecream.noOfOrderedIcecreams);
     let OrderedChocolates = useSelector((state)=>state.chocolate.noOfOrderedChocolates);
     let OrderedFlowers = useSelector((state)=>state.flower.noOfOrderedFlowers);
-    let order = OrderedCakes + OrderedIcecreams + OrderedChocolates + OrderedFlowers;
+    let OrderedGifts = useSelector((state)=>state.gift.noOfOrderedGifts);
+    let order = OrderedCakes + OrderedIcecreams + OrderedChocolates + OrderedFlowers + OrderedGifts;
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -50,6 +57,21 @@ function RNavbar(props) {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  const navLinkStyles = ({ isActive }) => {
+     return {
+       fontWeight: isActive ? "bold" : "normal",
+       textDecoration: "none",
+       textTransform: "none",
+        my: 2,
+         fontSize: isActive ? "18px" : "16px",
+          display: "block",
+           color: isActive ? "black" : "white",
+           fontWeight: isActive ? "bold" : "normal",
+            marginRight: "10px",
+            marginLeft: "10px",
+          };
+        };
 
   return (
     <AppBar position="static" >
@@ -72,10 +94,10 @@ function RNavbar(props) {
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
+              fontFamily: 'initial',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              color: 'inherit',
+              color: 'black',
               textDecoration: 'none',
             }}
           >
@@ -83,9 +105,9 @@ function RNavbar(props) {
           </Typography>
           </Link>
 
-          {/* <Box sx={{bgcolor:'white'}}>
+           <Box sx={{bgcolor:'white'}} style={{borderRadius:'10px'}}>
             <RAutocomplete/>
-          </Box> */}
+          </Box> 
           <Box sx={{flexGrow: 1, display: { xs: 'flex', md: 'none'  } }}>
             <IconButton
               size="large"
@@ -116,7 +138,9 @@ function RNavbar(props) {
               }}
             >
               {pages.map((page) => (
-                <Link to={page} style={{textDecoration:'none'}}>
+                <Link to={page} style={{textDecoration:'none'}} >
+                  
+                  
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
@@ -124,9 +148,7 @@ function RNavbar(props) {
               ))}
             </Menu>
           </Box>
-          <Box sx={{bgcolor:'white'}}>
-           <RAutocomplete/>
-         </Box>
+
           <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
             variant="h5"
@@ -146,27 +168,35 @@ function RNavbar(props) {
           >
             LOGO
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          <Box sx={{ flexGrow: 1 ,display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
-                <Link to={page} >
-              <Button
+                <NavLink to={page} 
+                style={navLinkStyles}
+                 onClick={handleCloseNavMenu}  >
+              {/* <Button
                 key={page}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
                 {page}
-              </Button>
-              </Link>
+              </Button> */}
+              {page}
+              </NavLink>
             ))}
             
           </Box>
 
+          <Box>
+            <Dialogbox icon={<LocationOnIcon/>} 
+            dtitle="Enter Delivery pincode" 
+            label='Pincode' b1='cancel' b2='ok'/>
+          </Box>
           
-
           <Box>
             <Link to='cart'>
               <IconButton aria-label='cart'>
-            <RBadge badgeContent={order}/>
+            <RBadge badgeContent={order} 
+            cartIcon={<ShoppingCartIcon/>}/>
             </IconButton>
             </Link>
           </Box>
@@ -194,9 +224,11 @@ function RNavbar(props) {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
+                <Link to = {setting}>
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
+                </Link>
               ))}
             </Menu>
           </Box>
